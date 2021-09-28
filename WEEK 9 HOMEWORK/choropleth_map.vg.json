@@ -5,30 +5,30 @@
     "height": 600,
     "projection": {"type": "equirectangular"},
     "data": {
-      "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/data/js/america.geo.topojson.json",
+      "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/WEEK%209%20HOMEWORK/world.geo.json.topojson.json",
       "format": {
             "type": "topojson",
-            "feature": "america.geo"
+            "feature": "world.geo.json"
           }
     },
     "transform": [{
         "lookup": "properties.NAME",
         "from": {
           "data": {
-            "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main//data/js/data/country_vaccinations.csv"
+            "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/WEEK%209%20HOMEWORK/country_vaccinations_official.csv"
           },
-          "key": "Country",
-          "fields": ["Active"]
+          "key": "country",
+          "fields": ["total_vaccinations"]
         }
       },
-      {"calculate": "datum.Active + 0.1", "as": "Active Cases"}
+      {"calculate": "datum.total_vaccinations + 0.1", "as": "Total Vaccinations"}
     ],
     "mark": {
       "type": "geoshape"
       },
     "encoding": {
       "color": {
-        "field": "Active Cases",
+        "field": "Total Vaccinations",
         "type": "quantitative",
         "scale": {"type": "log"}
       },
