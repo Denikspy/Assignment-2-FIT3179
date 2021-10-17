@@ -1,0 +1,72 @@
+#choropleth_map {
+	top:15px;
+	bottom: 50px; 
+	width: 100%;
+}
+.vis-container {
+	width: 100%;
+	height: 100%;
+}
+.page {
+    width: 1024px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 10px;
+}
+
+#bar_chart{
+	top:15px;
+	bottom: 50px;
+	width: 100%;
+}
+
+#bar_chart_normal{
+	top:15px;
+	bottom: 50px;
+	width: 100%;
+}
+
+#scatter_plot{
+	top:15px;
+	bottom: 50px;
+	width: 100%;
+}
+
+h1 {
+	font-family: 'Scheherazade New';
+	font-size: 400%;
+}
+
+h2{
+	font-family: 'Scheherazade New';
+	font-size: 200%;
+}
+
+p{
+	font-family: 'Roboto';
+	font-size: 100%;
+}
+
+html, body{
+	background-color: whitesmoke;
+}
+
+.break{
+	border: 0;
+	height: 3px;
+	background-image: linear-gradient(to right, transparent, #DDD, transparent);
+	padding-top:5px;
+}
+
+.china{
+	color:red
+}
+
+.vax{
+	color: steelblue;
+}
+
+.figure{
+	font-size: 150%
+}
