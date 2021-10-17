@@ -1,0 +1,37 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "title": { "text": "COVID-19 Vaccinations Top 10" },
+ "width": "container",
+ "height": "container",
+ "data": {
+ "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/WEEK%209%20HOMEWORK/country_vaccinations_official.csv"
+ },
+ "transform": [
+     {"calculate": "parseInt(datum.normalised_vaccines)", "as": "normalised_vaccines"},
+    {
+      "window": [{
+        "op": "rank",
+        "as": "rank"
+      }],
+      "sort": [{ "field": "normalised_vaccines", "order": "descending" }]
+    }, {
+      "filter": "datum.rank <= 10"
+    }
+  ],
+ "mark": "bar",
+ "encoding": {
+    "x": { "field": "country", "type": "nominal", "sort": "-y" },
+    "y": { "field": "normalised_vaccines", "type": "quantitative"},
+    "color": {
+      "condition": {
+          "test": "datum.country == 'China'",
+          "value": "red"
+      },
+      "value": "blue"},
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "country"},
+      {"field": "normalised_vaccines", "type": "quantitative"}
+      ]
+  }
+   }
+   

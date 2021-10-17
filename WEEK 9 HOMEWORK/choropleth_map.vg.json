@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Total COVID-19 Vaccinations 10th of September",
-    "width": 800,
-    "height": 600,
+    "width": "container",
+    "height": "container",
     "projection": {"type": "equirectangular"},
     "data": {
       "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/WEEK%209%20HOMEWORK/world.geo.json.topojson.json",
@@ -18,23 +18,25 @@
             "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/WEEK%209%20HOMEWORK/country_vaccinations_official.csv"
           },
           "key": "country",
-          "fields": ["total_vaccinations"]
+          "fields": ["total_vaccinations", "population"]
         }
       },
-      {"calculate": "datum.total_vaccinations + 0.1", "as": "Total Vaccinations"}
+      {"calculate": "datum.total_vaccinations/datum.population * 10000", "as": "Vaccinations per 10,000 population"}
     ],
     "mark": {
       "type": "geoshape"
       },
     "encoding": {
       "color": {
-        "field": "Total Vaccinations",
+        "field": "Vaccinations per 10,000 population",
         "type": "quantitative",
-        "scale": {"type": "log"}
+        "scale": {"type": "threshold",
+                  "domain": [1,10,100,1000,10000],
+                  "range": ["#ffffb2","#fed976", "#feb24c","#fd8d3c","#f03b20","#bd0026"]}
       },
       "tooltip": [
         {"field": "properties.name", "type": "nominal", "title": "country"},
-        {"field": "total_vaccinations", "type": "quantitative"}
+        {"field": "Vaccinations per 10,000 population", "type": "quantitative"}
       ]
     }
   

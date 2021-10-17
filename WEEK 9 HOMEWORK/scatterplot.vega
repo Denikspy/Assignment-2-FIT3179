@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Population and Vaccines: Is there a relationship?",
+  "width": "container",
+  "height": "container",
+  "data": {
+      "url": "https://raw.githubusercontent.com/Denikspy/Week-9-Homework/main/WEEK%209%20HOMEWORK/country_vaccinations_official.csv"
+    },
+    "transform":[
+        {"filter": "datum.population > 0"},
+        {"filter": "datum.normalised_vaccines > 0"}
+    ],
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "population", 
+        "type": "quantitative", 
+        "axis": {"tickCount": 7},
+        "scale": {"type": "log", "domain": [1,10000000000]}},
+    "y": {"field": "normalised_vaccines", 
+        "type": "quantitative", 
+        "axis": {"tickCount": 6},
+        "scale": {"type": "log", "domain": [1,100000000]}},
+    "color": {
+      "condition": {
+          "test": "datum.country == 'China' || datum.country == 'United States' || datum.country == 'India'",
+          "value": "red"
+      },
+      "value": "blue"},
+      "tooltip": [
+        {"field": "country", "type": "nominal", "title": "country"}
+        ]
+  }
+}
